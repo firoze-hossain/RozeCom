@@ -12,12 +12,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.roze.common.entity.Role;
 import com.roze.common.entity.User;
 
-public class ShopmeUserDetails implements UserDetails {
+public class RozeEcomUserDetails implements UserDetails {
 	private static final long serialVersionUID = 1L;
 	private User user;
 	
 	
-	public ShopmeUserDetails(User user) {
+	public RozeEcomUserDetails(User user) {
 		this.user = user;
 	}
 

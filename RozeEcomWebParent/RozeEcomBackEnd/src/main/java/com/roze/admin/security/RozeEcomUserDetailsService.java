@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import com.roze.admin.user.UserRepository;
 import com.roze.common.entity.User;
 
-public class ShopmeUserDetailsService implements UserDetailsService {
+public class RozeEcomUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private UserRepository userRepo;
@@ -17,7 +17,7 @@ public class ShopmeUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		User user = userRepo.getUserByEmail(email);
 		if (user != null) {
-			return new ShopmeUserDetails(user);
+			return new RozeEcomUserDetails(user);
 		}
 		
 		throw new UsernameNotFoundException("Could not find user with email: " + email);

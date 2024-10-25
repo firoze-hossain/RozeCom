@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
 @EntityScan({"com.roze.common.entity"})
-public class ShopmeFrontEndApplication {
+public class RozeEcomFrontEndApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ShopmeFrontEndApplication.class, args);
+		SpringApplication.run(RozeEcomFrontEndApplication.class, args);
 	}
 
 }

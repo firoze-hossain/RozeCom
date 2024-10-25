@@ -8,7 +8,7 @@ import com.roze.admin.brand.BrandService;
 import com.roze.admin.category.CategoryService;
 import com.roze.admin.paging.PagingAndSortingHelper;
 import com.roze.admin.paging.PagingAndSortingParam;
-import com.roze.admin.security.ShopmeUserDetails;
+import com.roze.admin.security.RozeEcomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -79,7 +79,7 @@ public class ProductController {
 			@RequestParam(name = "detailValues", required = false) String[] detailValues,
 			@RequestParam(name = "imageIDs", required = false) String[] imageIDs,
 			@RequestParam(name = "imageNames", required = false) String[] imageNames,
-			@AuthenticationPrincipal ShopmeUserDetails loggedUser
+			@AuthenticationPrincipal RozeEcomUserDetails loggedUser
 			) throws IOException {
 		
 		if (!loggedUser.hasRole("Admin") && !loggedUser.hasRole("Editor")) {
@@ -140,7 +140,7 @@ public class ProductController {
 	
 	@GetMapping("/products/edit/{id}")
 	public String editProduct(@PathVariable("id") Integer id, Model model,
-			RedirectAttributes ra, @AuthenticationPrincipal ShopmeUserDetails loggedUser) {
+			RedirectAttributes ra, @AuthenticationPrincipal RozeEcomUserDetails loggedUser) {
 		try {
 			Product product = productService.get(id);
 			List<Brand> listBrands = brandService.listAll();

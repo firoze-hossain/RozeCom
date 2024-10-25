@@ -18,7 +18,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	public UserDetailsService userDetailsService() {
-		return new ShopmeUserDetailsService();
+		return new RozeEcomUserDetailsService();
 	}
 	
 	@Bean

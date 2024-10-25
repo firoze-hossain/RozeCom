@@ -8,7 +8,7 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.roze.admin.security.ShopmeUserDetails;
+import com.roze.admin.security.RozeEcomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -47,7 +47,7 @@ public class OrderController {
 			@PagingAndSortingParam(listName = "listOrders", moduleURL = "/orders") PagingAndSortingHelper helper,
 			@PathVariable(name = "pageNum") int pageNum,
 			HttpServletRequest request,
-			@AuthenticationPrincipal ShopmeUserDetails loggedUser) {
+			@AuthenticationPrincipal RozeEcomUserDetails loggedUser) {
 
 		orderService.listByPage(pageNum, helper);
 		loadCurrencySetting(request);
@@ -70,7 +70,7 @@ public class OrderController {
 	@GetMapping("/orders/detail/{id}")
 	public String viewOrderDetails(@PathVariable("id") Integer id, Model model, 
 			RedirectAttributes ra, HttpServletRequest request,
-			@AuthenticationPrincipal ShopmeUserDetails loggedUser) {
+			@AuthenticationPrincipal RozeEcomUserDetails loggedUser) {
 		try {
 			Order order = orderService.get(id);
 			loadCurrencySetting(request);			

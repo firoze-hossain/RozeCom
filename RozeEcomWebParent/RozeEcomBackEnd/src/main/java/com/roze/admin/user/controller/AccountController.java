@@ -3,7 +3,7 @@ package com.roze.admin.user.controller;
 import java.io.IOException;
 
 import com.roze.admin.FileUploadUtil;
-import com.roze.admin.security.ShopmeUserDetails;
+import com.roze.admin.security.RozeEcomUserDetails;
 import com.roze.admin.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -25,7 +25,7 @@ public class AccountController {
 	private UserService service;
 	
 	@GetMapping("/account")
-	public String viewDetails(@AuthenticationPrincipal ShopmeUserDetails loggedUser,
+	public String viewDetails(@AuthenticationPrincipal RozeEcomUserDetails loggedUser,
 			Model model) {
 		String email = loggedUser.getUsername();
 		User user = service.getByEmail(email);
@@ -37,7 +37,7 @@ public class AccountController {
 	
 	@PostMapping("/account/update")
 	public String saveDetails(User user, RedirectAttributes redirectAttributes,
-			@AuthenticationPrincipal ShopmeUserDetails loggedUser,
+			@AuthenticationPrincipal RozeEcomUserDetails loggedUser,
 			@RequestParam("image") MultipartFile multipartFile) throws IOException {
 		
 		if (!multipartFile.isEmpty()) {

@@ -8,10 +8,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 @EntityScan({"com.roze.common.entity"})
-public class ShopmeBackEndApplication {
+public class RozeEcomBackEndApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ShopmeBackEndApplication.class, args);
+		SpringApplication.run(RozeEcomBackEndApplication.class, args);
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
         // Contraseña a codificar
