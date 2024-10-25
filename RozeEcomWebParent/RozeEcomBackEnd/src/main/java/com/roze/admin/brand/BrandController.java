@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.roze.admin.AmazonS3Util;
+import com.roze.admin.FileUploadUtil;
 import com.roze.admin.category.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -62,8 +63,10 @@ public class BrandController {
 			Brand savedBrand = brandService.save(brand);
 			String uploadDir = "brand-logos/" + savedBrand.getId();
 			
-			AmazonS3Util.removeFolder(uploadDir);
-			AmazonS3Util.uploadFile(uploadDir, fileName, multipartFile.getInputStream());
+		//	AmazonS3Util.removeFolder(uploadDir);
+			FileUploadUtil.removeDir(uploadDir);
+			//AmazonS3Util.uploadFile(uploadDir, fileName, multipartFile.getInputStream());
+			FileUploadUtil.saveFile(uploadDir,fileName,multipartFile);
 		} else {
 			brandService.save(brand);
 		}
@@ -97,7 +100,8 @@ public class BrandController {
 		try {
 			brandService.delete(id);
 			String brandDir = "brand-logos/" + id;
-			AmazonS3Util.removeFolder(brandDir);
+			//AmazonS3Util.removeFolder(brandDir);
+			FileUploadUtil.removeDir(brandDir);
 			
 			redirectAttributes.addFlashAttribute("message", 
 					"The brand ID " + id + " has been deleted successfully");
