@@ -1,21 +1,21 @@
 package com.roze.common.entity;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class IdBasedEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected Integer id;
-	
-	public Integer getId() {
-		return id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Integer id;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}	
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

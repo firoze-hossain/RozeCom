@@ -1,106 +1,105 @@
 package com.roze.common.entity.order;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
 import com.roze.common.entity.Category;
 import com.roze.common.entity.IdBasedEntity;
 import com.roze.common.entity.product.Product;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "order_details")
 public class OrderDetail extends IdBasedEntity {
-	private int quantity;
-	private float productCost;
-	private float shippingCost;
-	private float unitPrice;
-	private float subtotal;
-	
-	@ManyToOne
-	@JoinColumn(name = "product_id")
-	private Product product;
-	
-	@ManyToOne
-	@JoinColumn(name = "order_id")
-	private Order order;
-	
-	public OrderDetail() {
-	}
+    private int quantity;
+    private float productCost;
+    private float shippingCost;
+    private float unitPrice;
+    private float subtotal;
 
-	public OrderDetail(String categoryName, int quantity, float productCost, float shippingCost, float subtotal) {
-		this.product = new Product();
-		this.product.setCategory(new Category(categoryName));
-		this.quantity = quantity;
-		this.productCost = productCost * quantity;
-		this.shippingCost = shippingCost;
-		this.subtotal = subtotal;
-	}
-	
-	public OrderDetail(int quantity, String productName, float productCost, float shippingCost, float subtotal) {
-		this.product = new Product(productName);
-		this.quantity = quantity;
-		this.productCost = productCost * quantity;
-		this.shippingCost = shippingCost;
-		this.subtotal = subtotal;
-	}	
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
 
-	public int getQuantity() {
-		return quantity;
-	}
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
+    public OrderDetail() {
+    }
 
-	public float getProductCost() {
-		return productCost;
-	}
+    public OrderDetail(String categoryName, int quantity, float productCost, float shippingCost, float subtotal) {
+        this.product = new Product();
+        this.product.setCategory(new Category(categoryName));
+        this.quantity = quantity;
+        this.productCost = productCost * quantity;
+        this.shippingCost = shippingCost;
+        this.subtotal = subtotal;
+    }
 
-	public void setProductCost(float productCost) {
-		this.productCost = productCost;
-	}
+    public OrderDetail(int quantity, String productName, float productCost, float shippingCost, float subtotal) {
+        this.product = new Product(productName);
+        this.quantity = quantity;
+        this.productCost = productCost * quantity;
+        this.shippingCost = shippingCost;
+        this.subtotal = subtotal;
+    }
 
-	public float getShippingCost() {
-		return shippingCost;
-	}
+    public int getQuantity() {
+        return quantity;
+    }
 
-	public void setShippingCost(float shippingCost) {
-		this.shippingCost = shippingCost;
-	}
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
-	public float getUnitPrice() {
-		return unitPrice;
-	}
+    public float getProductCost() {
+        return productCost;
+    }
 
-	public void setUnitPrice(float unitPrice) {
-		this.unitPrice = unitPrice;
-	}
+    public void setProductCost(float productCost) {
+        this.productCost = productCost;
+    }
 
-	public float getSubtotal() {
-		return subtotal;
-	}
+    public float getShippingCost() {
+        return shippingCost;
+    }
 
-	public void setSubtotal(float subtotal) {
-		this.subtotal = subtotal;
-	}
+    public void setShippingCost(float shippingCost) {
+        this.shippingCost = shippingCost;
+    }
 
-	public Product getProduct() {
-		return product;
-	}
+    public float getUnitPrice() {
+        return unitPrice;
+    }
 
-	public void setProduct(Product product) {
-		this.product = product;
-	}
+    public void setUnitPrice(float unitPrice) {
+        this.unitPrice = unitPrice;
+    }
 
-	public Order getOrder() {
-		return order;
-	}
+    public float getSubtotal() {
+        return subtotal;
+    }
 
-	public void setOrder(Order order) {
-		this.order = order;
-	}
-	
-	
+    public void setSubtotal(float subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+
 }
