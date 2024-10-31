@@ -11,6 +11,12 @@
         <module name="RozeEcomBackEnd" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="RozeComCommon" target="11" />
+      <module name="RozeComWebParent" target="11" />
+      <module name="ShopmeBackEnd" target="11" />
+      <module name="ShopmeFrontEnd" target="11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
