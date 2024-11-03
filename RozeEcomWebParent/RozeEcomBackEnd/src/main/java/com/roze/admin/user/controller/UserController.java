@@ -1,6 +1,7 @@
 package com.roze.admin.user.controller;
 
 import com.roze.admin.AmazonS3Util;
+import com.roze.admin.FileUploadUtil;
 import com.roze.admin.paging.PagingAndSortingHelper;
 import com.roze.admin.paging.PagingAndSortingParam;
 import com.roze.admin.user.UserNotFoundException;
@@ -72,8 +73,10 @@ public class UserController {
 
             String uploadDir = "user-photos/" + savedUser.getId();
 
-            AmazonS3Util.removeFolder(uploadDir);
-            AmazonS3Util.uploadFile(uploadDir, fileName, multipartFile.getInputStream());
+            // AmazonS3Util.removeFolder(uploadDir);
+            FileUploadUtil.removeDir(uploadDir);
+            //AmazonS3Util.uploadFile(uploadDir, fileName, multipartFile.getInputStream());
+            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
         } else {
             if (user.getPhotos().isEmpty()) user.setPhotos(null);
             service.save(user);
@@ -118,7 +121,8 @@ public class UserController {
         try {
             service.delete(id);
             String userPhotosDir = "user-photos/" + id;
-            AmazonS3Util.removeFolder(userPhotosDir);
+          //  AmazonS3Util.removeFolder(userPhotosDir);
+            FileUploadUtil.removeDir(userPhotosDir);
 
             redirectAttributes.addFlashAttribute("message",
                     "The user ID " + id + " has been deleted successfully");
